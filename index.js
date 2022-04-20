@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const Employee = require("./lib/employee.js");
 const Manager = require("./lib/manager.js");
-const Engineer = require("./lib/engineer.js");
+const Engr = require("./lib/engineer.js");
 const Intern = require("./lib/intern.js");
 
 
@@ -117,11 +117,11 @@ function chooseNextTeammate () {
     inquirer.prompt(nextTeammate)
     .then(choice=>{
     console.log(choice);
-    if (choice==="Engineer") {
+    if (choice==='Engineer') {
         inquirer.prompt(nextEngineer)
         .then(dataEngineer=>{
         console.log(dataEngineer);
-        const myEngineer = new Engineer(
+        const myEngineer = new Engr(
             dataEngineer.employeeName,
             dataEngineer.iD,
             dataEngineer.email,
@@ -129,7 +129,7 @@ function chooseNextTeammate () {
         );
         console.log(myEngineer);
         })
-    } else if (choice === "Intern") {
+    } else if (choice == "Intern") {
         inquirer.prompt(nextIntern)
         .then(dataIntern=>{
         console.log(dataIntern);
