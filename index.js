@@ -3,7 +3,7 @@ const fs = require("fs");
 const Employee = require("./lib/employee.js");
 const Manager = require("./lib/manager.js");
 const Engr = require("./lib/engineer.js");
-const Intern = require("./lib/intern.js");
+const Int = require("./lib/intern.js");
 
 
 // need to put questionNextTeamMember in function getRole() in employee.js
@@ -82,7 +82,7 @@ const nextEngineer = [
     },
     {
         type : "input",
-        name : "officeNumber",
+        name : "gitHub",
         message : "What is the engineer's GitHub username?",
     }
 ];
@@ -105,8 +105,8 @@ const nextIntern = [
     },
     {
         type : "input",
-        name : "officeNumber",
-        message : "What is the intern's GitHub username?",
+        name : "school",
+        message : "What is the school that the intern attended?",
     }
 ];
 
@@ -117,7 +117,7 @@ function chooseNextTeammate () {
     inquirer.prompt(nextTeammate)
     .then(choice=>{
     console.log(choice);
-    if (choice==='Engineer') {
+    if (choice.memberTitle === 'Engineer') {
         inquirer.prompt(nextEngineer)
         .then(dataEngineer=>{
         console.log(dataEngineer);
@@ -128,17 +128,20 @@ function chooseNextTeammate () {
             dataEngineer.gitHub
         );
         console.log(myEngineer);
+        chooseNextTeammate ();
         })
-    } else if (choice == "Intern") {
+    } else if (choice.memberTitle === "Intern") {
         inquirer.prompt(nextIntern)
         .then(dataIntern=>{
         console.log(dataIntern);
-        const myIntern = new Intern(
+        const myIntern = new Int(
             dataIntern.employeeName,
             dataIntern.iD,
             dataIntern.email,
             dataIntern.school
         );
+        console.log(myIntern);
+        chooseNextTeammate ();
         })
     } else {
         process.exit();
