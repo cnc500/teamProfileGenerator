@@ -1,7 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Employee = require("./lib/employee.js")
-const Manager = require("./lib/manager.js")
+const Employee = require("./lib/employee.js");
+const Manager = require("./lib/manager.js");
+const Engineer = require("./lib/engineer.js");
+const Intern = require("./lib/intern.js");
+
 
 // need to put questionNextTeamMember in function getRole() in employee.js
 // need to create getName(), getId() and getEmail() in employee.js
@@ -9,7 +12,7 @@ const Manager = require("./lib/manager.js")
 const questionsManager = [
     {
         type : "input",
-        name : "name",
+        name : "employeeName",
         message : "What is the name of your team's manager?",
     },
     {
@@ -35,61 +38,114 @@ function init() {
         .then(dataManager=>{
         console.log(dataManager);
         const myManager = new Manager(
-            dataManager.name,
+            dataManager.employeeName,
             // getRole(),
             dataManager.iD,
             dataManager.email,
             dataManager.officeNumber
         );
         console.log(myManager);
-        let name = myManager.getName();
+        let employeeName = myManager.getName();
         let role = myManager.getRole();
         let Id = myManager.getId();
         let email = myManager.getemail();
         let officeNumber = myManager.getOfficeNumber();
-        console.log(name, role, Id, email, officeNumber);
+        console.log(employeeName, role, Id, email, officeNumber);
     chooseNextTeammate();
     })    
 }
 
 const nextTeammate = [
-
-
-]
-
-
-function chooseNextTeammate() {
     {
         type : "list",
-        name : "officeNumber",
-        message : "What is your team manager's office number?",
-    },
-}
+        name : "memberTitle",
+        message : "Choose a new team member role or select that you are finished assembling your team.",
+        choices : ["Engineer","Intern","I do not wish to add any more team members."]
+    }    
+];
 
+const nextEngineer = [
+    {
+        type : "input",
+        name : "employeeName",
+        message : "What is the engineer's name?",
+    },
+    {
+        type : "input",
+        name : "iD",
+        message : "What is the engineer's ID number (positve number only)?",
+    },
+    {
+        type : "input",
+        name : "email",
+        message : "What is the engineer's email address?",
+    },
+    {
+        type : "input",
+        name : "officeNumber",
+        message : "What is the engineer's GitHub username?",
+    }
+];
+
+const nextIntern = [
+    {
+        type : "input",
+        name : "employeeName",
+        message : "What is the intern's name?",
+    },
+    {
+        type : "input",
+        name : "iD",
+        message : "What is the intern's ID number (positve number only)?",
+    },
+    {
+        type : "input",
+        name : "email",
+        message : "What is the intern's email address?",
+    },
+    {
+        type : "input",
+        name : "officeNumber",
+        message : "What is the intern's GitHub username?",
+    }
+];
+
+
+
+
+function chooseNextTeammate () {
+    inquirer.prompt(nextTeammate)
+    .then(choice=>{
+    console.log(choice);
+    if (choice==="Engineer") {
+        inquirer.prompt(nextEngineer)
+        .then(dataEngineer=>{
+        console.log(dataEngineer);
+        const myEngineer = new Engineer(
+            dataEngineer.employeeName,
+            dataEngineer.iD,
+            dataEngineer.email,
+            dataEngineer.gitHub
+        );
+        console.log(myEngineer);
+        })
+    } else if (choice === "Intern") {
+        inquirer.prompt(nextIntern)
+        .then(dataIntern=>{
+        console.log(dataIntern);
+        const myIntern = new Intern(
+            dataIntern.employeeName,
+            dataIntern.iD,
+            dataIntern.email,
+            dataIntern.school
+        );
+        })
+    } else {
+        process.exit();
+    }
+    })
+}
 // Calls function init to initialize app
 init();
-//    inquirer.prompt(questionNextTeamMember);
-    // if (choices==="Engineer"){   
-    //     getName(); 
-    //     getId(); 
-    //     getEmail();
-    //     getGithub();
-    // } else if (choices==="Intern") {
-    //     getName(); 
-    //     getId(); 
-    //     getEmail();
-    //     getSchool();
-    // } else {
-    //     // message "You have assembles an awesome team!"
-    // }
-    // }
-
-
-    //     inquirer.prompt(employee.questionsEngineer);
-
-    // }
-    // .then(data=>{
-    //     console.log(data);
-    // }
 
 
