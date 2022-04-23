@@ -4,6 +4,8 @@ const Employee = require("./lib/employee.js");
 const Manager = require("./lib/manager.js");
 const Engr = require("./lib/engineer.js");
 const Int = require("./lib/intern.js");
+const generateHtml = require("./src/generateHtml")
+
 
 
 // need to put questionNextTeamMember in function getRole() in employee.js
@@ -51,6 +53,9 @@ function init() {
         let email = myManager.getemail();
         let officeNumber = myManager.getOfficeNumber();
         console.log(employeeName, role, Id, email, officeNumber);
+        const generateData = generateHtml(dataManager);
+        fs.writeFileSync("./dist/index.html",generateData);
+
     chooseNextTeammate();
     })    
 }
