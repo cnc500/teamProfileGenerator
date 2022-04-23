@@ -5,7 +5,7 @@ const Manager = require("./lib/manager.js");
 const Engr = require("./lib/engineer.js");
 const Int = require("./lib/intern.js");
 const generateHtml = require("./src/generateHtml")
-
+var employees = [];
 
 
 // need to put questionNextTeamMember in function getRole() in employee.js
@@ -46,13 +46,14 @@ function init() {
             dataManager.email,
             dataManager.officeNumber
         );
-        console.log(myManager);
-        let employeeName = myManager.getName();
-        let role = myManager.getRole();
-        let Id = myManager.getId();
-        let email = myManager.getemail();
-        let officeNumber = myManager.getOfficeNumber();
-        console.log(employeeName, role, Id, email, officeNumber);
+        // console.log(myManager);
+        employees.push(myManager);
+        // let employeeName = myManager.getName();
+        // let role = myManager.getRole();
+        // let Id = myManager.getId();
+        // let email = myManager.getemail();
+        // let officeNumber = myManager.getOfficeNumber();
+        // console.log(employeeName, role, Id, email, officeNumber);
         const generateData = generateHtml(dataManager);
         fs.writeFileSync("./dist/index.html",generateData);
 
@@ -69,8 +70,10 @@ const nextTeammate = [
     }    
 ];
 
-const nextEngineer = [
+function nextEngineer () {
+return inquirer.prompt(    [
     {
+
         type : "input",
         name : "employeeName",
         message : "What is the engineer's name?",
@@ -90,7 +93,22 @@ const nextEngineer = [
         name : "gitHub",
         message : "What is the engineer's GitHub username?",
     }
-];
+])
+.then(dataEngineer=>{
+    // console.log(dataEngineer);
+    var myEngineer = new Engr(
+        dataEngineer.employeeName,
+        dataEngineer.iD,
+        dataEngineer.email,
+        dataEngineer.gitHub
+    );
+    employees.push(myEngineer);
+    // console.log(myEngineer);
+    chooseNextTeammate ();
+    })
+
+}
+
 
 const nextIntern = [
     {
@@ -121,39 +139,33 @@ const nextIntern = [
 function chooseNextTeammate () {
     inquirer.prompt(nextTeammate)
     .then(choice=>{
-    console.log(choice);
+    // console.log(choice);
     if (choice.memberTitle === 'Engineer') {
-        inquirer.prompt(nextEngineer)
-        .then(dataEngineer=>{
-        console.log(dataEngineer);
-        const myEngineer = new Engr(
-            dataEngineer.employeeName,
-            dataEngineer.iD,
-            dataEngineer.email,
-            dataEngineer.gitHub
-        );
-        console.log(myEngineer);
-        chooseNextTeammate ();
-        })
+        nextEngineer()
     } else if (choice.memberTitle === "Intern") {
         inquirer.prompt(nextIntern)
         .then(dataIntern=>{
-        console.log(dataIntern);
+        // console.log(dataIntern);
         const myIntern = new Int(
             dataIntern.employeeName,
             dataIntern.iD,
             dataIntern.email,
             dataIntern.school
         );
+        employees.push(myEngineer);
+
         console.log(myIntern);
         chooseNextTeammate ();
         })
     } else {
-        process.exit();
+        console.log(employees);
+        built();
     }
     })
 }
 // Calls function init to initialize app
 init();
 
-
+function built() {
+    fs.writeFileSync("./dist/index.html",generateHtml(employees));
+}
