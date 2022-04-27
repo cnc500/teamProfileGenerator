@@ -4,7 +4,7 @@ const Employee = require("./lib/employee.js");
 const Manager = require("./lib/manager.js");
 const Engr = require("./lib/engineer.js");
 const Int = require("./lib/intern.js");
-const generateHtml = require("./src/generateHtml")
+const generate = require("./src/generateHtml")
 var employees = [];
 
 
@@ -54,8 +54,6 @@ function init() {
         // let email = myManager.getemail();
         // let officeNumber = myManager.getOfficeNumber();
         // console.log(employeeName, role, Id, email, officeNumber);
-        const generateData = generateHtml(dataManager);
-        fs.writeFileSync("./dist/index.html",generateData);
 
     chooseNextTeammate();
     })    
@@ -152,20 +150,16 @@ function chooseNextTeammate () {
             dataIntern.email,
             dataIntern.school
         );
-        employees.push(myEngineer);
+        employees.push(myIntern);
 
         console.log(myIntern);
         chooseNextTeammate ();
         })
     } else {
         console.log(employees);
-        built();
+        generate(employees);
     }
     })
 }
 // Calls function init to initialize app
 init();
-
-function built() {
-    fs.writeFileSync("./dist/index.html",generateHtml(employees));
-}
