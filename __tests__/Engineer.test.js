@@ -14,11 +14,11 @@ describe("Engineer", () => {
     //   expect(cb).toThrow();
     // });
 
-    it("should throw an error if not provided a GitHub username", () => {
-        const cb = () => new Engineer("Rachel", 211, "rachel@fooemail.com");
-        const err = new Error("Expected parameter 'GitHub Username' to be a non-empty string");
+    // it("should throw an error if not provided a GitHub username", () => {
+    //     const cb = () => new Engineer("Rachel", 211, "rachel@fooemail.com");
+    //     const err = new Error("Expected parameter 'GitHub Username' to be a non-empty string");
   
-        expect(cb).toThrowError(err);
-    });
+    //     expect(cb).toThrowError(err);
+    // });
   });
 });

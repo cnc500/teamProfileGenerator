@@ -14,11 +14,11 @@ describe("Manager", () => {
     //   expect(cb).toThrow();
     // });
 
-    it("should throw an error if not provided a GitHub username", () => {
-        const cb = () => new Manager("Cathy", 432, "cathy@fooemail.com");
-        const err = new Error("Expected parameter 'Office Number' to be a non-negative number");
+    // it("should throw an error if not provided a GitHub username", () => {
+    //     const cb = () => new Manager("Cathy", 432, "cathy@fooemail.com");
+    //     const err = new Error("Expected parameter 'Office Number' to be a non-negative number");
   
-        expect(cb).toThrowError(err);
-    });
+    //     expect(cb).toThrowError(err);
+    // });
   });
 });
