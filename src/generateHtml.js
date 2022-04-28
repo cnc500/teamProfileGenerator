@@ -1,5 +1,11 @@
+// The File System node module is brought in to later help create the html file using 
+// writeFileSync. 
 const fs = require("fs");
 
+// This function is used to call three different functions (addManager, addEngineer & 
+// addIntern) selected by the role of the team member.  These respective functions 
+// generate and add that portion of the html code to the html file appropriate for each 
+// role of the team member.  Finally, the html file is generated using writeFileSync.
 function generate(team) {
   var page = [];
   for (var i = 0; i < team.length; i++) {
@@ -16,10 +22,12 @@ function generate(team) {
         page.push(internHtml);
       }
     }
-    console.log(page);
   fs.writeFileSync("./dist/index.html", built(page))
 }
 
+// This function effectively builds the html document generating the everything surrounding
+// the employees/team members and than adds them using page from the generate function
+// above.
 function built (page) {
   return `
   <!DOCTYPE html>
@@ -47,6 +55,9 @@ function built (page) {
   </body>
   </html>`
 }
+
+// This function is used to generate the portion of the html file that will be used for adding
+// the team manager.
 function addManager(dataManager) {
     return`
         <div class="shade list-group col-lg-3 col-sm-9">
@@ -74,6 +85,8 @@ function addManager(dataManager) {
     
 `;}
 
+// This function is used to generate the portion of the html file that will be used for adding
+// a team engineer.
 function addEngineer(eng){
     return `
     <div class="shade list-group col-2">
@@ -101,6 +114,8 @@ function addEngineer(eng){
     `
 }
 
+// This function is used to generate the portion of the html file that will be used for adding
+// a team intern.
 function addIntern (intern) {
     return `
     <div class="shade list-group col-2">
@@ -126,7 +141,7 @@ function addIntern (intern) {
     </a>
   </div>
     `
-
 }
 
+// Function is exported for use in index.js
 module.exports = generate;
