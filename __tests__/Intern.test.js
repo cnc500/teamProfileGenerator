@@ -1,4 +1,4 @@
-const Intern = require("./lib/intern");
+const Intern = require("../lib/Intern");
 
 describe("Intern", () => {
   describe("Initialization", () => {
@@ -7,6 +7,7 @@ describe("Intern", () => {
       // const obj = new Intern(text);
 
       expect(intern.school).toEqual("universityA");
+
     });
 
     // it("should throw an error if provided no arguments", () => {

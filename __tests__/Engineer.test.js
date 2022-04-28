@@ -1,4 +1,4 @@
-const Engineer = require("../engineer");
+const Engineer = require("../lib/Engineer");
 
 describe("Engineer", () => {
   describe("Initialization", () => {
@@ -8,6 +8,7 @@ describe("Engineer", () => {
       expect(engineer.gitHub).toEqual("projectRachel");
     });
 
+    
     // it("should throw an error if provided no arguments", () => {
     //   const cb = () => new Engineer();
 
