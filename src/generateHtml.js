@@ -72,7 +72,7 @@ function addManager(dataManager) {
                 <!-- <button class="mb-1 ">ID #</button> -->
               </div>
               <div class="mb-3">
-                <button type="button" class="btn btn-lg btn-info btn-block ">Email ${dataManager.email} </button>  </button>
+                <button type="button" class="btn btn-lg btn-info btn-block SendEmail">Email ${dataManager.email} </button>  </button>
                 <!-- <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button> -->
                 <!-- <button class="mb-1 ">ID #</button> -->
               </div>
@@ -100,14 +100,15 @@ function addEngineer(eng){
         <button type="button" class="btn btn-lg btn-info ml-5 mr-5 ">ID # ${eng.iD}   </button>
         <!-- <button class="mb-1 ">ID #</button> -->
       </div>
-      <div class="mb-3">
-        <button type="button" class="btn btn-lg btn-info btn-block ">Email ${eng.email} </button>  </button>
-        <!-- <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button> -->
-        <!-- <button class="mb-1 ">ID #</button> -->
+      <div class="d-flex w-100 justify-content-between">
+        <a href=mailto:"${eng.email}">
+        <button type="button" class="btn btn-lg btn-info btn-block ">Email ${eng.email} </button>
+        </a>
       </div>
       <div class="d-flex w-100 justify-content-between">
-        <button type="button" class="btn btn-lg btn-info ml-5 mr-2">GitHub ${eng.gitHub}</button>
-        <!-- <button class="mb-1 ">ID #</button> -->
+        <a href="https://github.com/${eng.gitHub}">
+        <button type=button class="btn btn-lg btn-info ml-5 mr-2">GitHub ${eng.gitHub}</button>
+        </a>
       </div>
     </a>
   </div>
