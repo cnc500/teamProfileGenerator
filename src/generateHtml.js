@@ -61,27 +61,24 @@ function built (page) {
 function addManager(dataManager) {
     return`
         <div class="shade list-group col-lg-3 col-sm-9">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-              <!-- <div class="d-flex w-100 justify-content-between"> -->
-                <h1 class="mb-3">${dataManager.employeeName}</h1>
-                <h2>Manager</h2>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action flex-row align-items-center ">
-              <div class="mb-3 mt-3">
-                <button type="button" class="btn btn-lg btn-info ml-5 mr-5 ">ID # ${dataManager.iD}   </button>
-                <!-- <button class="mb-1 ">ID #</button> -->
-              </div>
-              <div class="mb-3">
-                <button type="button" class="btn btn-lg btn-info btn-block SendEmail">Email ${dataManager.email} </button>  </button>
-                <!-- <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button> -->
-                <!-- <button class="mb-1 ">ID #</button> -->
-              </div>
-              <div class="d-flex w-100 justify-content-between">
-                <button type="button" class="btn btn-lg btn-info ml-5 mr-2">Office # ${dataManager.officeNumber}</button>
-                <!-- <button class="mb-1 ">ID #</button> -->
-              </div>
-            </a>
+          <div href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <h1 class="mb-3">${dataManager.employeeName}</h1>
+            <h2>Manager</h2>
           </div>
+          <div href="#" class="list-group-item list-group-item-action flex-row align-items-center ">
+            <div class="mb-3 mt-3">
+              <button type="button" class="btn btn-lg btn-info ml-5 mr-5 ">ID # ${dataManager.iD}   </button>
+            </div>
+            <div class="mb-3">
+              <a href="mailto:${dataManager.email}">
+              <button type="button" class="btn btn-lg btn-info btn-block SendEmail">Email ${dataManager.email} </button>
+              </a>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+              <button type="button" class="btn btn-lg btn-info ml-5 mr-2">Office # ${dataManager.officeNumber}</button>
+            </div>
+          </div>
+        </div>
     
 `;}
 
@@ -89,29 +86,27 @@ function addManager(dataManager) {
 // a team engineer.
 function addEngineer(eng){
     return `
-    <div class="shade list-group col-2">
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-      <!-- <div class="d-flex w-100 justify-content-between"> -->
-        <h1 class="mb-3">${eng.employeeName}</h1>
-        <h2>Engineer</h2>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action flex-row align-items-center ">
-      <div class="mb-3 mt-3">
-        <button type="button" class="btn btn-lg btn-info ml-5 mr-5 ">ID # ${eng.iD}   </button>
-        <!-- <button class="mb-1 ">ID #</button> -->
-      </div>
-      <div class="d-flex w-100 justify-content-between">
-        <a href="mailto:${eng.email}">
-        <button type="button" class="btn btn-lg btn-info btn-block ">Email ${eng.email} </button>
-        </a>
-      </div>
-      <div class="d-flex w-100 justify-content-between">
-        <a href="https://github.com/${eng.gitHub}">
-        <button type=button class="btn btn-lg btn-info ml-5 mr-2">GitHub ${eng.gitHub}</button>
-        </a>
-      </div>
-    </a>
-  </div>
+        <div class="shade list-group col-2">
+          <div href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <h1 class="mb-3">${eng.employeeName}</h1>
+            <h2>Engineer</h2>
+          </div>
+          <div href="#" class="list-group-item list-group-item-action flex-row align-items-center ">
+            <div class="mb-3 mt-3">
+              <button type="button" class="btn btn-lg btn-info ml-5 mr-5 ">ID # ${eng.iD}   </button>
+            </div>
+            <div class="d-flex w-100 justify-content-between mb-3">
+              <a href="mailto:${eng.email}">
+              <button type="button" class="btn btn-lg btn-info btn-block ">Email ${eng.email} </button>
+              </a>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+              <a href="https://github.com/${eng.gitHub}">
+              <button type=button class="btn btn-lg btn-info ml-5 mr-2">GitHub ${eng.gitHub}</button>
+              </a>
+            </div>
+          </div>
+        </div>
     `
 }
 
@@ -119,28 +114,25 @@ function addEngineer(eng){
 // a team intern.
 function addIntern (intern) {
     return `
-    <div class="shade list-group col-2">
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-      <!-- <div class="d-flex w-100 justify-content-between"> -->
-        <h1 class="mb-3">${intern.employeeName}</h1>
-        <h2>Intern</h2>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action flex-row align-items-center ">
-      <div class="mb-3 mt-3">
-        <button type="button" class="btn btn-lg btn-info ml-5 mr-5 ">ID # ${intern.iD}   </button>
-        <!-- <button class="mb-1 ">ID #</button> -->
-      </div>
-      <div class="mb-3">
-        <button type="button" class="btn btn-lg btn-info btn-block ">Email ${intern.email} </button>  </button>
-        <!-- <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button> -->
-        <!-- <button class="mb-1 ">ID #</button> -->
-      </div>
-      <div class="d-flex w-100 justify-content-between">
-        <button type="button" class="btn btn-lg btn-info ml-5 mr-2">School ${intern.school}</button>
-        <!-- <button class="mb-1 ">ID #</button> -->
-      </div>
-    </a>
-  </div>
+        <div class="shade list-group col-2">
+          <div href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <h1 class="mb-3">${intern.employeeName}</h1>
+            <h2>Intern</h2>
+          </div>
+          <div href="#" class="list-group-item list-group-item-action flex-row align-items-center ">
+            <div class="mb-3 mt-3">
+              <button type="button" class="btn btn-lg btn-info ml-5 mr-5 ">ID # ${intern.iD}   </button>
+            </div>
+            <div class="d-flex w-100 justify-content-between mb-3">
+              <a href="mailto:${intern.email}">
+              <button type="button" class="btn btn-lg btn-info btn-block ">Email ${intern.email} </button>
+              </a>
+            </div>
+            <div class="d-flex w-100 justify-content-between">
+              <button type="button" class="btn btn-lg btn-info ml-5 mr-2">School ${intern.school}</button>
+            </div>
+          </div>
+        </div>
     `
 }
 
