@@ -23,4 +23,5 @@
   ###   GitHub Username:  cnc500
   ###   GitHub Repository:  teamProfileGenerator
   ###   Email:  cncarnevale@gmail.com
-  
+  ## Video
+  https://drive.google.com/file/d/1pz9JnAY18waBXToC6TAa_cKAJZQjR8z5/view?usp=sharing
